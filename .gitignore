@@ -75,3 +75,6 @@ crashlytics.properties
 crashlytics-build.properties
 
 # Created by .ignore support plugin (hsz.mobi)
+
+# MAC files:
+*.DS_Store
