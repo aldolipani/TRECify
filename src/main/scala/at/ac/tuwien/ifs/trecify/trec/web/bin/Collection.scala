@@ -1,27 +1,26 @@
-package at.ac.tuwien.ifs.trecify.ehealth.bin
+package at.ac.tuwien.ifs.trecify.trec.web.bin
 
 import java.io.File
 
-import at.ac.tuwien.ifs.trecify.clefip.model.CLEFIPCollection
-import at.ac.tuwien.ifs.trecify.ehealth.model.{EHealthCollection, EHealthDocument}
-import at.ac.tuwien.ifs.trecify.mediaeval.model.{MediaEvalCollection, MediaEvalDocument}
+import at.ac.tuwien.ifs.trecify.clefip.model._
+import at.ac.tuwien.ifs.trecify.ehealth.model.{EHealthDocument, EHealthCollection}
 import at.ac.tuwien.ifs.trecify.trec.model._
 import at.ac.tuwien.ifs.trecify.utility.Out
 
-import scala.xml.XML
+import scalaz.EphemeralStream
 
 /**
  * Created by aldo on 22/04/15.
  */
 
-//java -Xmx20G -Xms10G -cp ~/bin/TRECify.jar at.ac.tuwien.ifs.trecify.ehealth.bin.Collection ./eHealth14/files TRECCollection/
+//java -cp /data/lipani/BM25Norm/bin/trecify.jar at.ac.tuwien.ifs.trecify.trec.web.bin.Collection Collection/ TRECCollection/
 object Collection extends App {
 
   override def main(args: Array[String]): Unit = {
     val pathCollection = new File(args(0))
     val pathTRECCollection = args(1)
 
-    val collection = new EHealthCollection(pathCollection.getAbsolutePath)
+    val collection = new TRECWebCollection(pathCollection.getAbsolutePath)
     val docs = collection.getStreamDocuments()
 
     docs.map(doc => {
@@ -34,7 +33,7 @@ object Collection extends App {
     }).toList
   }
 
-  def doc2TRECDoc(doc: EHealthDocument): TRECDocument = {
+  def doc2TRECDoc(doc: TRECWebDocument): TRECDocument = {
     new TRECDocument(
       doc.id,
       null,

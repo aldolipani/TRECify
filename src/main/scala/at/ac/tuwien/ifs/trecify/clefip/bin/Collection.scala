@@ -50,6 +50,6 @@ object Collection extends App{
       clefIPDoc.getDescription + "\n" +
       clefIPDoc.getClaims
 
-    new TRECDocument("", docno, title, text)
+    new TRECDocument(docno, title, text)
   }
 }

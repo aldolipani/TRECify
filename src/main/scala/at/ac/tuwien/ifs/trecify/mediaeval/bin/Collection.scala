@@ -59,7 +59,7 @@ object Collection extends App{
       }catch {
         case e:Exception => u.description
       }
-      new TRECDocument("",
+      new TRECDocument(
         u.id,
         u.title,
         List(ndescription, u.tags).mkString("\n"))})

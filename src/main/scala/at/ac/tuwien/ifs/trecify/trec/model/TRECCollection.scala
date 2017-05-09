@@ -23,7 +23,7 @@ class TRECCollection(filePath:String) extends Collection[TRECDocument](filePath)
 
 }
 
-class TRECDocument(val path:String, val docno:String, val h3:String, val text:String) extends Document{
+class TRECDocument(val docno:String, val h3:String, val text:String) extends Document{
 
   override def toString():String = {
     "<DOC>\n\n" +
@@ -69,7 +69,6 @@ object TRECDocument{
     val node = scala.xml.XML.loadString(doc.toString)
     (node \\ "doc").map(d => {
       new TRECDocument(
-        filePath,
       (d \ "docno").text.trim,
       (d \ "h3").text,
       (d \ "text").text)
@@ -78,7 +77,7 @@ object TRECDocument{
 
 }
 
-class TRECWebDocument(val docno:String, val dochdr:String = null, val html:String = null) {
+/*class TRECWebDocument(val docno:String, val dochdr:String = null, val html:String = null) {
 
   override def toString():String = {
       "<DOC>\n\n" +
@@ -93,4 +92,4 @@ class TRECWebDocument(val docno:String, val dochdr:String = null, val html:Strin
       "</DOC>\n"
   }
 
-}
+}*/

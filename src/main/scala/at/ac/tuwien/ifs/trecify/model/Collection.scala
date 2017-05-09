@@ -26,7 +26,8 @@ abstract class Collection[A <: Document](val filePath: String) {
             next(files.tailOption.get, docs, n)
         }catch{
           case e:Exception => {
-            println("Warning: " + e.getStackTrace)
+            println("Warning: ")
+            e.printStackTrace()
             next(files.tailOption.get, docs, n)
           }
         }
