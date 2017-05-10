@@ -24,7 +24,7 @@ object Collection extends App {
     val docs = collection.getStreamDocuments()
 
     docs.map(doc => {
-      val docSubPath = doc.file.getParent.replace(pathCollection.getCanonicalPath, "")
+      val docSubPath = doc.file.getParent.replace(pathCollection.getAbsolutePath, "")
       val trecDoc = doc2TRECDoc(doc)
       val docFile = new File(pathTRECCollection, docSubPath + File.separator + trecDoc.docno)
       val text = trecDoc.toString()
